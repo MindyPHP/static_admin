@@ -58,6 +58,21 @@ var paths = {
         'vendor/mmodal/js/jquery.mindy.modal.js',
         'vendor/fancybox/source/jquery.fancybox.pack.js',
         'vendor/pickmeup/js/jquery.pickmeup.js',
+        'vendor/underscore/underscore.js',
+
+        'vendor/flow.js/dist/flow.min.js',
+
+        'vendor/meditor/js/utils.js',
+        'vendor/meditor/js/core.js',
+        'vendor/meditor/js/engine.js',
+        'vendor/meditor/js/editor.js',
+        'vendor/meditor/js/block.js',
+        'vendor/meditor/js/plugins/text/text.js',
+        'vendor/meditor/js/plugins/video.js',
+        'vendor/meditor/js/plugins/lost.js',
+        'vendor/meditor/js/plugins/space.js',
+        'vendor/meditor/js/plugins/image.js',
+        'vendor/meditor/js/plugins/map/map.js',
 
         'components/mtooltip/mtooltip.js',
 
@@ -70,9 +85,9 @@ var paths = {
     ],
     css: [
         'css/**/*.css',
-
+        'vendor/meditor/css/editor.css',
         'components/mtooltip/mtooltip.css',
-
+        'vendor/font-awesome/css/font-awesome.min.css',
         'vendor/select2/select2.css',
         'vendor/pen/src/pen.css',
         'vendor/pickmeup/css/pickmeup.css',
@@ -86,7 +101,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('wysiwyg', function() {
-    return gulp.src('vendor/tinymce107/**/*')
+    return gulp.src('vendor/ckeditor/**/*')
         .pipe(gulp.dest('dist/wysiwyg'));
 });
 
