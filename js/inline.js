@@ -52,12 +52,21 @@ $(document).on('click', '.inline-add', function (e) {
                     idData = id.match(regex);
 
                 if (nameData && idData) {
-                    $el.attr({
-                        id: idData[1] + cloneIndex + idData[2],
-                        name: nameData[1] + cloneIndex + nameData[2],
-                        value: null,
-                        checked: null
-                    });
+                  if ($el.hasClass('_changed')) {
+                      $el.attr({
+                          id: idData[1] + cloneIndex + idData[2],
+                          name: nameData[1] + cloneIndex + nameData[2],
+                          value: true,
+                          checked: null
+                      });
+                  } else {
+                      $el.attr({
+                          id: idData[1] + cloneIndex + idData[2],
+                          name: nameData[1] + cloneIndex + nameData[2],
+                          value: null,
+                          checked: null
+                      });
+                  }
                 }
             }
 
