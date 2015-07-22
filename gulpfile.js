@@ -52,7 +52,7 @@ var paths = {
         'vendor/jquery-autosize/jquery.autosize.min.js',
         'vendor/jquery-ui/ui/minified/jquery-ui.min.js',
         'vendor/flow.js/dist/flow.js',
-        //        'vendor/Chart.js/Chart.js',
+        'vendor/Chart.js/Chart.js',
         'vendor/mmodal/js/jquery.mindy.modal.js',
         'vendor/fancybox/source/jquery.fancybox.pack.js',
         'vendor/pickmeup/js/jquery.pickmeup.js',
@@ -79,6 +79,7 @@ var paths = {
         'vendor/semantic-ui/dist/components/checkbox.js',
         'vendor/semantic-ui/dist/components/dropdown.js',
         'vendor/semantic-ui/dist/components/popup.js',
+        'vendor/semantic-ui/dist/components/tab.js',
         'vendor/semantic-ui/dist/components/transition.js',
 
         // https://github.com/nightwing/emmet-core

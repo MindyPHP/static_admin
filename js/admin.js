@@ -13,6 +13,7 @@ $(function () {
 
     $('.ui.dropdown').dropdown();
     $('.ui.checkbox').checkbox();
+    $('.menu .item').tab();
     $('.show-hide-sidebar, .ui.popup-item').popup();
     $('.breadcrumb-nested').popup({
         inline: true,
