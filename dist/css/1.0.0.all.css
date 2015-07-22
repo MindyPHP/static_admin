@@ -14363,7 +14363,8 @@ fieldset legend {
   top: 0;
   left: 0;
   z-index: 1;
-  background-color: transparent; }
+  background-color: transparent;
+  min-width: 978px; }
   #wrapper-table tbody tr td {
     padding: 0;
     vertical-align: top; }
@@ -14395,7 +14396,8 @@ fieldset legend {
           text-rendering: optimizeLegibility; }
         #wrapper-table tbody tr td#sidebar-td #sidebar #header .manage a {
           color: #616161;
-          margin-left: 13px;
+          padding: 0 0 0 10px;
+          text-align: center;
           font-size: 1rem; }
         #wrapper-table tbody tr td#sidebar-td #sidebar #header .user-panel {
           margin: 0;
@@ -14700,7 +14702,7 @@ fieldset legend {
     z-index: 110; }
 
 form.save-update .buttons-block {
-  z-index: 10001;
+  z-index: 200;
   position: fixed;
   bottom: 0;
   left: 251px;
@@ -14789,11 +14791,6 @@ form.save-update .buttons-block {
   box-shadow: 0px -2px 8px 0 rgba(0, 0, 0, 0.076);
   padding: 0.9375rem;
   border-top: 1px solid #ccc; }
-  form.save-update .buttons-block .button {
-    margin-bottom: 0 !important;
-    margin-right: 10px !important;
-    -khtml-border-radius: 3px;
-    border-radius: 3px; }
 
 .current-file img {
   max-width: 200px;
@@ -14802,133 +14799,136 @@ form.save-update .buttons-block {
 textarea {
   max-width: 100%; }
 
-form .current-file-container a {
-  font-size: 12px;
-  margin: 8px 0;
-  color: #aaa; }
-form .form-inline {
-  margin: 0;
-  border: 0 none;
-  outline: 0 none;
-  padding: 0;
-  list-style: none; }
-  form .form-inline, form .form-inline li {
-    outline: none; }
-  form .form-inline li {
-    margin-bottom: 10px; }
-form.save-update {
-  padding: 0;
-  margin-top: 15px; }
-  form.save-update .form-ul {
-    padding: 25px;
-    border-top: 1px solid #dddddd; }
-    form.save-update .form-ul, form.save-update .form-ul li {
-      outline: none; }
-  form.save-update .form-block {
-    padding: 0 25px; }
-  form.save-update fieldset {
-    padding: 25px 0 25px;
+form {
+  padding-bottom: 65px; }
+  form hr {
+    margin: 0; }
+  form .current-file-container a {
+    font-size: 12px;
+    margin: 8px 0;
+    color: #aaa; }
+  form .form-inline {
     margin: 0;
-    position: relative;
-    border-width: 1px 0 0; }
-    form.save-update fieldset legend {
-      position: absolute;
-      top: -10px;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      font-weight: 700; }
-    form.save-update fieldset .form-ul, form.save-update fieldset .form-block {
-      padding: 0;
-      border-top: none; }
-  form.save-update select, form.save-update input[type="text"], form.save-update input[type="password"], form.save-update input[type="email"], form.save-update input[type="phone"], form.save-update input[type="hidden"] {
-    width: 50%; }
-  form.save-update .inline-form {
-    padding: 25px 0; }
-    form.save-update .inline-form .form-inline-section {
-      padding: 5px 0 10px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #f0f0f0; }
-      form.save-update .inline-form .form-inline-section select, form.save-update .inline-form .form-inline-section input[type="text"], form.save-update .inline-form .form-inline-section input[type="password"], form.save-update .inline-form .form-inline-section input[type="email"], form.save-update .inline-form .form-inline-section input[type="phone"], form.save-update .inline-form .form-inline-section input[type="hidden"] {
-        width: 100%; }
-      form.save-update .inline-form .form-inline-section a.current-file {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: block; }
-      form.save-update .inline-form .form-inline-section .form-block {
-        margin: 0;
-        padding: 0; }
-      form.save-update .inline-form .form-inline-section > table {
-        margin: 0; }
-        form.save-update .inline-form .form-inline-section > table > tr:hover {
-          background-color: transparent; }
-        form.save-update .inline-form .form-inline-section > table > tr > td {
-          vertical-align: top;
-          padding: 0 6px; }
-          form.save-update .inline-form .form-inline-section > table > tr > td p {
-            font-size: 14px;
-            line-height: 1.2; }
-          form.save-update .inline-form .form-inline-section > table > tr > td:first-child {
-            padding-left: 0; }
-          form.save-update .inline-form .form-inline-section > table > tr > td:last-child {
-            padding-right: 0; }
-    form.save-update .inline-form .inline-add {
-      margin-top: 10px !important;
-      display: block;
-      border: 1px solid #ccc;
-      padding: 6px;
-      text-align: center;
-      color: #353535;
-      background-color: #f4f4f4; }
-  form.save-update .inline-source {
-    background-color: transparent;
-    border: 0;
+    border: 0 none;
+    outline: 0 none;
     padding: 0;
+    list-style: none; }
+    form .form-inline, form .form-inline li {
+      outline: none; }
+    form .form-inline li {
+      margin-bottom: 10px; }
+  form.save-update {
+    padding: 15px 0 65px 0; }
+    form.save-update .form-ul {
+      padding: 25px;
+      border-top: 1px solid #dddddd; }
+      form.save-update .form-ul, form.save-update .form-ul li {
+        outline: none; }
+    form.save-update .form-block {
+      padding: 0 25px; }
+    form.save-update fieldset {
+      padding: 25px 0 25px;
+      margin: 0;
+      position: relative;
+      border-width: 1px 0 0; }
+      form.save-update fieldset legend {
+        position: absolute;
+        top: -10px;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 700; }
+      form.save-update fieldset .form-ul, form.save-update fieldset .form-block {
+        padding: 0;
+        border-top: none; }
+    form.save-update select, form.save-update input[type="text"], form.save-update input[type="password"], form.save-update input[type="email"], form.save-update input[type="phone"], form.save-update input[type="hidden"] {
+      width: 70%; }
+    form.save-update .inline-form {
+      padding: 25px 0; }
+      form.save-update .inline-form .form-inline-section {
+        padding: 5px 0 10px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #f0f0f0; }
+        form.save-update .inline-form .form-inline-section select, form.save-update .inline-form .form-inline-section input[type="text"], form.save-update .inline-form .form-inline-section input[type="password"], form.save-update .inline-form .form-inline-section input[type="email"], form.save-update .inline-form .form-inline-section input[type="phone"], form.save-update .inline-form .form-inline-section input[type="hidden"] {
+          width: 100%; }
+        form.save-update .inline-form .form-inline-section a.current-file {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: block; }
+        form.save-update .inline-form .form-inline-section .form-block {
+          margin: 0;
+          padding: 0; }
+        form.save-update .inline-form .form-inline-section > table {
+          margin: 0; }
+          form.save-update .inline-form .form-inline-section > table > tr:hover {
+            background-color: transparent; }
+          form.save-update .inline-form .form-inline-section > table > tr > td {
+            vertical-align: top;
+            padding: 0 6px; }
+            form.save-update .inline-form .form-inline-section > table > tr > td p {
+              font-size: 14px;
+              line-height: 1.2; }
+            form.save-update .inline-form .form-inline-section > table > tr > td:first-child {
+              padding-left: 0; }
+            form.save-update .inline-form .form-inline-section > table > tr > td:last-child {
+              padding-right: 0; }
+      form.save-update .inline-form .inline-add {
+        margin-top: 10px !important;
+        display: block;
+        border: 1px solid #ccc;
+        padding: 6px;
+        text-align: center;
+        color: #353535;
+        background-color: #f4f4f4; }
+    form.save-update .inline-source {
+      background-color: transparent;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      display: none; }
+  form .form-block {
+    margin-bottom: 15px; }
+  form label {
+    font-size: 0.9rem;
+    margin-bottom: 4px; }
+  form ul.error {
+    list-style: none;
     margin: 0;
-    display: none; }
-form .form-block {
-  margin-bottom: 15px; }
-form label {
-  font-size: 0.9rem;
-  margin-bottom: 4px; }
-form ul.error {
-  list-style: none;
-  margin: 0;
-  color: #c37d7d;
-  font-size: 13px;
-  font-style: italic; }
-  form ul.error li {
-    display: block;
-    margin-top: 6px; }
-    form ul.error li:before {
-      font-family: 'glyphico';
-      content: "\e683";
-      font-weight: normal;
-      font-style: normal;
-      margin-right: 10px; }
-form select[multiple] {
-  min-height: 120px;
-  height: auto; }
-form input, form select {
-  margin: 0 !important; }
-form .form-ul {
-  margin: 0;
-  border: 0 none;
-  outline: 0 none;
-  padding: 0;
-  list-style: none; }
-  form .form-ul li {
-    margin-bottom: 10px; }
-form .form-inline-table tbody tr th, form .form-inline-table tbody tr td, form .form-inline-table tfoot tr th, form .form-inline-table tfoot tr td, form .form-inline-table thead tr th, form .form-inline-table thead tr td {
-  vertical-align: top; }
-  form .form-inline-table tbody tr th.actions, form .form-inline-table tbody tr td.actions, form .form-inline-table tfoot tr th.actions, form .form-inline-table tfoot tr td.actions, form .form-inline-table thead tr th.actions, form .form-inline-table thead tr td.actions {
-    vertical-align: middle; }
-  form .form-inline-table tbody tr th label, form .form-inline-table tbody tr td label, form .form-inline-table tfoot tr th label, form .form-inline-table tfoot tr td label, form .form-inline-table thead tr th label, form .form-inline-table thead tr td label {
-    color: #95A5A6; }
-form .form-hint-text {
-  font-size: 0.9rem;
-  color: #616161;
-  margin-bottom: 5px; }
+    color: #c37d7d;
+    font-size: 13px;
+    font-style: italic; }
+    form ul.error li {
+      display: block;
+      margin-top: 6px; }
+      form ul.error li:before {
+        font-family: 'glyphico';
+        content: "\e683";
+        font-weight: normal;
+        font-style: normal;
+        margin-right: 10px; }
+  form select[multiple] {
+    min-height: 120px;
+    height: auto; }
+  form input, form select {
+    margin: 0 !important; }
+  form .form-ul {
+    margin: 0;
+    border: 0 none;
+    outline: 0 none;
+    padding: 0;
+    list-style: none; }
+    form .form-ul li {
+      margin-bottom: 10px; }
+  form .form-inline-table tbody tr th, form .form-inline-table tbody tr td, form .form-inline-table tfoot tr th, form .form-inline-table tfoot tr td, form .form-inline-table thead tr th, form .form-inline-table thead tr td {
+    vertical-align: top; }
+    form .form-inline-table tbody tr th.actions, form .form-inline-table tbody tr td.actions, form .form-inline-table tfoot tr th.actions, form .form-inline-table tfoot tr td.actions, form .form-inline-table thead tr th.actions, form .form-inline-table thead tr td.actions {
+      vertical-align: middle; }
+    form .form-inline-table tbody tr th label, form .form-inline-table tbody tr td label, form .form-inline-table tfoot tr th label, form .form-inline-table tfoot tr td label, form .form-inline-table thead tr th label, form .form-inline-table thead tr td label {
+      color: #95A5A6; }
+  form .form-hint-text {
+    font-size: 0.9rem;
+    color: #616161;
+    margin-bottom: 5px; }
 
 .errorMessage {
   color: #C0392B; }
@@ -15026,121 +15026,25 @@ textarea {
     padding: 5px 10px;
     padding-right: 20px; }
 
-.toolbar-holder {
-  height: 62px; }
-  .toolbar-holder .toolbar {
-    padding-top: 15px;
-    padding-bottom: 15px; }
-    .toolbar-holder .toolbar select {
+.toolbar {
+  width: 100%; }
+  .toolbar td input, .toolbar td select, .toolbar td .button {
+    height: 34px; }
+  .toolbar td .button .icon {
+    font-size: 0.9rem;
+    margin-top: 1px !important; }
+  .toolbar td.toolbar-actions-td {
+    padding: 0 0 0 0 !important;
+    width: 350px; }
+    .toolbar td.toolbar-actions-td select {
+      width: 200px;
+      border: 1px solid rgba(34, 36, 38, 0.15);
+      border-radius: 0.28571rem 0 0 0.28571rem;
+      margin: 0 -3px 0 5px !important; }
+  .toolbar td.toolbar-search-td {
+    padding: 0 0 0 5px !important; }
+    .toolbar td.toolbar-search-td input {
       width: 200px; }
-    .toolbar-holder .toolbar select, .toolbar-holder .toolbar input, .toolbar-holder .toolbar .button {
-      margin-bottom: 0; }
-    .toolbar-holder .toolbar .search-toolbar {
-      display: none;
-      position: relative; }
-      .toolbar-holder .toolbar .search-toolbar .exit-search, .toolbar-holder .toolbar .search-toolbar .icon-search {
-        position: absolute;
-        height: 39px;
-        line-height: 39px;
-        width: 39px;
-        text-align: center; }
-      .toolbar-holder .toolbar .search-toolbar .exit-search {
-        right: 0;
-        top: 0; }
-      .toolbar-holder .toolbar .search-toolbar .icon-search {
-        left: 0;
-        top: 0; }
-      .toolbar-holder .toolbar .search-toolbar i {
-        position: relative;
-        top: 2px;
-        color: #cbcbcb; }
-      .toolbar-holder .toolbar .search-toolbar input {
-        padding-left: 39px;
-        -khtml-border-radius: 3px;
-        border-radius: 3px;
-        background-color: #f9f9f9; }
-        .toolbar-holder .toolbar .search-toolbar input:focus {
-          border: 1px solid #2575b0; }
-    .toolbar-holder .toolbar .search {
-      margin-right: 10px; }
-    .toolbar-holder .toolbar .create {
-      margin-right: 20px; }
-      .toolbar-holder .toolbar .create i {
-        position: relative;
-        top: 2px; }
-    .toolbar-holder .toolbar .submit-actions {
-      margin-left: 10px; }
-    .toolbar-holder .toolbar.search {
-      width: 100%; }
-      .toolbar-holder .toolbar.search .search-toolbar {
-        -webkit-animation-name: show;
-        -khtml-animation-name: show;
-        animation-name: show;
-        -webkit-animation-duration: 0.3s;
-        -khtml-animation-duration: 0.3s;
-        animation-duration: 0.3s;
-        -webkit-animation-fill-mode: both;
-        -khtml-animation-fill-mode: both;
-        animation-fill-mode: both;
-        display: block; }
-      .toolbar-holder .toolbar.search .search, .toolbar-holder .toolbar.search .create, .toolbar-holder .toolbar.search .actions, .toolbar-holder .toolbar.search .submit-actions {
-        display: none; }
-
-.button.custom-button {
-  padding: 0 10px; }
-  .button.custom-button.sub-button-left {
-    padding-left: 0; }
-    .button.custom-button.sub-button-left .sub-button {
-      -khtml-transition: background-color 300ms ease-out;
-      transition: background-color 300ms ease-out;
-      -khtml-border-radius: 3px 0 0 3px;
-      border-radius: 3px 0 0 3px;
-      display: inline-block;
-      background: #2575b0;
-      padding: 0 10px;
-      margin-right: 3px; }
-    .button.custom-button.sub-button-left:hover .sub-button, .button.custom-button.sub-button-left:active .sub-button {
-      background: #489bbe; }
-  .button.custom-button.submit-actions {
-    background-color: #7c7c7c; }
-
-.toolbar select {
-  -khtml-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #f5f5f5;
-  border: none;
-  padding: 5px 10px; }
-.toolbar select, .toolbar .button {
-  height: 30px; }
-.toolbar .button {
-  line-height: 30px;
-  padding: 0 8px; }
-
-@-webkit-keyframes show {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-20px);
-    -khtml-transform: translateY(-20px);
-    transform: translateY(-20px); }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -khtml-transform: translateY(0);
-    transform: translateY(0); } }
-
-@keyframes show {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-20px);
-    -khtml-transform: translateY(-20px);
-    transform: translateY(-20px); }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -khtml-transform: translateY(0);
-    transform: translateY(0); } }
 
 input, select {
   outline: none; }
@@ -15480,24 +15384,24 @@ p {
   outline: 0 none;
   padding: 0;
   list-style: none;
-  padding-top: 5px;
-  margin: 10px 0; }
+  margin: 20px 0; }
   .flash-list li {
-    font-size: 18px;
-    font-weight: 200;
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: 1.2rem;
     background-color: #f9f9f9;
     border-style: solid;
     border-color: #e0e0e0;
-    border-width: 1px 0;
+    border-width: 1px;
     padding: 15px 25px 15px 73px;
     margin-bottom: 10px;
     background-position: 25px 50%;
     background-repeat: no-repeat; }
-    .flash-list li .close {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .flash-list li .icon {
       cursor: pointer;
-      font-size: 26px;
-      line-height: 26px;
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 2rem;
       opacity: 0.5;
       -moz-opacity: 0.5;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";

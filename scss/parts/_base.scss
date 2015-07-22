@@ -7,6 +7,7 @@
   left: 0;
   z-index: 1;
   background-color: transparent;
+  min-width: 978px;
 
   tbody {
     tr {
@@ -31,6 +32,11 @@
             }
 
             @import "table";
+
+            .heading {
+              h1 {
+              }
+            }
 
             table {
               width: 100%;

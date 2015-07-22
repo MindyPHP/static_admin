@@ -1,147 +1,33 @@
-.toolbar-holder {
-  height: 62px;
-
-  .toolbar {
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-    select {
-      width: 200px;
-    }
-
-    select, input, .button {
-      margin-bottom: 0;
-    }
-
-    .search-toolbar {
-      display: none;
-      position: relative;
-
-      .exit-search, .icon-search {
-        position: absolute;
-        height: 39px;
-        line-height: 39px;
-        width: 39px;
-        text-align: center;
-      }
-
-      .exit-search {
-        right: 0;
-        top: 0;
-      }
-
-      .icon-search {
-        left: 0;
-        top: 0;
-      }
-
-      i {
-        position: relative;
-        top: 2px;
-        color: $midGrey;
-      }
-
-      input {
-        padding-left: 39px;
-        @include border-radius(3px);
-        background-color: $grey;
-
-        &:focus{
-          border: 1px solid $blue;
-        }
-      }
-
-    }
-
-    .search {
-      margin-right: 10px;
-    }
-
-    .create {
-      margin-right: 20px;
-
-      i {
-        position: relative;
-        top: 2px;
-      }
-    }
-
-    .submit-actions {
-      margin-left: 10px;
-    }
-
-    &.search {
-      width: 100%;
-
-      .search-toolbar {
-        @include crossbrowser(animation-name, show);
-        @include crossbrowser(animation-duration, 0.3s);
-        @include crossbrowser(animation-fill-mode, both);
-        display: block;
-      }
-
-      .search, .create, .actions, .submit-actions {
-        display: none;
-      }
-    }
-  }
-}
-
-.button.custom-button {
-  padding: 0 10px;
-
-  &.sub-button-left {
-    padding-left: 0;
-
-    .sub-button {
-      @include transition(background-color 300ms ease-out);
-      @include border-radius(3px 0 0 3px);
-      display: inline-block;
-      background: $blue;
-      padding: 0 10px;
-      margin-right: 3px;
-    }
-
-    &:hover, &:active {
-      .sub-button {
-        background: $midBlue;
-      }
-    }
-  }
-
-  &.submit-actions{
-    background-color: #7c7c7c
-  }
-}
-
 .toolbar {
-  $toolbarButtonHeight: 30px;
+  width: 100%;
 
-  select {
-    @include border-radius(3px);
-    background-color: $lightGrey;
-    border: none;
-    padding: 5px 10px;
-  }
+  td {
+    input, select, .button {
+      height: 34px;
+    }
 
-  select, .button {
-    height: $toolbarButtonHeight;
-  }
+    .button .icon {
+      font-size: 0.9rem;
+      margin-top: 1px !important;
+    }
 
-  .button {
-    line-height: $toolbarButtonHeight;
-    padding: 0 8px;
-  }
-}
+    &.toolbar-actions-td {
+      padding: 0 0 0 0 !important;
+      width: 350px;
 
-@include keyframes(show) {
-  0% {
-    opacity: 0;
-    @include transform(translateY(-20px));
-  }
+      select {
+        width: 200px;
+        border: 1px solid rgba(34, 36, 38, 0.15);
+        border-radius: 0.28571rem 0 0 0.28571rem;
+        margin: 0 -3px 0 5px !important;
+      }
+    }
 
-  100% {
-    opacity: 1;
-    @include transform(translateY(0));
+    &.toolbar-search-td {
+      padding: 0 0 0 5px !important;
+      input {
+        width: 200px;
+      }
+    }
   }
 }

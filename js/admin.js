@@ -1,5 +1,5 @@
 var resizeButtonsBlock = function () {
-    $('.buttons-block').css($('#sidebar-td').hasClass('hide') ? {
+    $('.buttons-block').css($('#sidebar-td').css('display') != 'none' ? {
         width: $(document).width() - 250,
         left: 251
     } : {
@@ -80,8 +80,12 @@ $(document).on('click', '#hide-sidebar', function (e) {
 
 $(document).on('click', '.flash-list .close', function (e) {
     e.preventDefault();
-    $('.tooltip').fadeOut();
-    $(this).parent().fadeOut();
+    var $list = $('.flash-list');
+    if ($list.children().length == 1) {
+        $list.hide();
+    } else {
+        $(this).parent().hide();
+    }
     return false;
 });
 

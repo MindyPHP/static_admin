@@ -1,26 +1,30 @@
 .flash-list {
   @include reset-list;
-  padding-top: $defaultPadding - 20px;
-  margin: 10px 0;
+  margin: 20px 0;
 
   li {
-    font-size: 18px;
-    font-weight: 200;
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: 1.2rem;
     background-color: $grey;
-    border-style: solid;
-    border-color: darken($grey, 10%);
-    border-width: 1px 0;
+    border: {
+      style: solid;
+      color: darken($grey, 10%);
+      width: 1px;
+    }
     padding: 15px $defaultPadding 15px $defaultPadding + 33px + 15px;
     margin-bottom: 10px;
 
-    background-position: $defaultPadding 50%;
-    background-repeat: no-repeat;
+    background: {
+      position: $defaultPadding 50%;
+      repeat: no-repeat;
+    }
 
-    .close {
-      font-family: $helvetica;
+    .icon {
       cursor: pointer;
-      font-size: 26px;
-      line-height: 26px;
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 2rem;
       @include opacity(0.5);
     }
 
