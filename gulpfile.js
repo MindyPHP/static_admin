@@ -129,6 +129,11 @@ gulp.task('coffee', function() {
         .pipe(gulp.dest(dst.js))
 });
 
+gulp.task('wysiwyg', function() {
+    return gulp.src('vendor/tinymce107/**/*')
+        .pipe(gulp.dest('dist/wysiwyg'));
+});
+
 gulp.task('js', ['coffee'], function() {
     return gulp.src(paths.js)
         // .pipe(uglify())
@@ -180,7 +185,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build', function() {
-    return gulp.start('js', 'css', 'images', 'fonts');
+    return gulp.start('js', 'css', 'images', 'fonts', 'wysiwyg');
 });
 
 gulp.task('default', ['clean'], function() {

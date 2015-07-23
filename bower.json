@@ -18,6 +18,7 @@
     "jquery-form": "~3.46.0",
     "semantic-ui": "~2.0.3",
     "perfect-scrollbar": "~0.6.3",
-    "ueditor107": "*"
+    "ueditor107": "*",
+    "tinymce107": "~1.0.0"
   }
 }
