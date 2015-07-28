@@ -14240,9 +14240,6 @@ i.icon.bed:before {
     .ps-container:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y {
       background-color: #999; }
 
-body {
-  background-color: #f9f9f9; }
-
 h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14541,7 +14538,7 @@ fieldset legend {
     left: 0;
     top: 0;
     height: 100%;
-    background-color: transparent;
+    background-color: #f9f9f9;
     width: 250px;
     border-right: 1px solid #ccc;
     overflow: auto; }
@@ -14974,7 +14971,7 @@ textarea {
   max-width: 100%; }
 
 form {
-  padding-bottom: 65px; }
+  padding: 15px 0 65px 0; }
   form hr {
     margin: 0; }
   form .current-file-container a {
@@ -14991,75 +14988,70 @@ form {
       outline: none; }
     form .form-inline li {
       margin-bottom: 10px; }
-  form.save-update {
-    padding: 15px 0 65px 0; }
-    form.save-update .form-ul {
-      padding: 25px;
-      border-top: 1px solid #dddddd; }
-      form.save-update .form-ul, form.save-update .form-ul li {
-        outline: none; }
-    form.save-update .form-block {
-      padding: 0 25px; }
-    form.save-update fieldset {
-      padding: 25px 0 25px;
-      margin: 0;
-      position: relative;
-      border-width: 1px 0 0; }
-      form.save-update fieldset legend {
-        position: absolute;
-        top: -10px;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        font-weight: 700; }
-      form.save-update fieldset .form-ul, form.save-update fieldset .form-block {
-        padding: 0;
-        border-top: none; }
-    form.save-update select, form.save-update input[type="text"], form.save-update input[type="password"], form.save-update input[type="email"], form.save-update input[type="phone"], form.save-update input[type="hidden"] {
-      width: 70%; }
-    form.save-update .inline-form {
-      padding: 25px 0; }
-      form.save-update .inline-form .form-inline-section {
-        padding: 5px 0 10px;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #f0f0f0; }
-        form.save-update .inline-form .form-inline-section select, form.save-update .inline-form .form-inline-section input[type="text"], form.save-update .inline-form .form-inline-section input[type="password"], form.save-update .inline-form .form-inline-section input[type="email"], form.save-update .inline-form .form-inline-section input[type="phone"], form.save-update .inline-form .form-inline-section input[type="hidden"] {
-          width: 100%; }
-        form.save-update .inline-form .form-inline-section a.current-file {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: block; }
-        form.save-update .inline-form .form-inline-section .form-block {
-          margin: 0;
-          padding: 0; }
-        form.save-update .inline-form .form-inline-section > table {
-          margin: 0; }
-          form.save-update .inline-form .form-inline-section > table > tr:hover {
-            background-color: transparent; }
-          form.save-update .inline-form .form-inline-section > table > tr > td {
-            vertical-align: top;
-            padding: 0 6px; }
-            form.save-update .inline-form .form-inline-section > table > tr > td p {
-              font-size: 14px;
-              line-height: 1.2; }
-            form.save-update .inline-form .form-inline-section > table > tr > td:first-child {
-              padding-left: 0; }
-            form.save-update .inline-form .form-inline-section > table > tr > td:last-child {
-              padding-right: 0; }
-      form.save-update .inline-form .inline-add {
-        margin-top: 10px !important;
-        display: block;
-        border: 1px solid #ccc;
-        padding: 6px;
-        text-align: center;
-        color: #353535;
-        background-color: #f4f4f4; }
-    form.save-update .inline-source {
-      background-color: transparent;
-      border: 0;
+  form.save-update .form-ul, form.save-update .form-ul li {
+    outline: none; }
+  form.save-update .form-block {
+    padding: 0 25px; }
+  form.save-update fieldset {
+    padding: 25px 0 25px;
+    margin: 0;
+    position: relative;
+    border-width: 1px 0 0; }
+    form.save-update fieldset legend {
+      position: absolute;
+      top: -10px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700; }
+    form.save-update fieldset .form-ul, form.save-update fieldset .form-block {
       padding: 0;
-      margin: 0;
-      display: none; }
+      border-top: none; }
+  form.save-update select, form.save-update input[type="text"], form.save-update input[type="password"], form.save-update input[type="email"], form.save-update input[type="phone"], form.save-update input[type="hidden"] {
+    width: 70%; }
+  form.save-update .inline-form {
+    padding: 25px 0; }
+    form.save-update .inline-form .form-inline-section {
+      padding: 5px 0 10px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #f0f0f0; }
+      form.save-update .inline-form .form-inline-section select, form.save-update .inline-form .form-inline-section input[type="text"], form.save-update .inline-form .form-inline-section input[type="password"], form.save-update .inline-form .form-inline-section input[type="email"], form.save-update .inline-form .form-inline-section input[type="phone"], form.save-update .inline-form .form-inline-section input[type="hidden"] {
+        width: 100%; }
+      form.save-update .inline-form .form-inline-section a.current-file {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block; }
+      form.save-update .inline-form .form-inline-section .form-block {
+        margin: 0;
+        padding: 0; }
+      form.save-update .inline-form .form-inline-section > table {
+        margin: 0; }
+        form.save-update .inline-form .form-inline-section > table > tr:hover {
+          background-color: transparent; }
+        form.save-update .inline-form .form-inline-section > table > tr > td {
+          vertical-align: top;
+          padding: 0 6px; }
+          form.save-update .inline-form .form-inline-section > table > tr > td p {
+            font-size: 14px;
+            line-height: 1.2; }
+          form.save-update .inline-form .form-inline-section > table > tr > td:first-child {
+            padding-left: 0; }
+          form.save-update .inline-form .form-inline-section > table > tr > td:last-child {
+            padding-right: 0; }
+    form.save-update .inline-form .inline-add {
+      margin-top: 10px !important;
+      display: block;
+      border: 1px solid #ccc;
+      padding: 6px;
+      text-align: center;
+      color: #353535;
+      background-color: #f4f4f4; }
+  form.save-update .inline-source {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: none; }
   form .form-block {
     margin-bottom: 15px; }
   form label {

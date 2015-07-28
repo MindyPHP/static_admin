@@ -87,7 +87,7 @@ textarea {
 }
 
 form {
-  padding-bottom: 65px;
+  padding: 15px 0 65px 0;
 
   hr {
     margin: 0;
@@ -114,12 +114,7 @@ form {
   }
 
   &.save-update {
-    padding: 15px 0 65px 0;
-
     .form-ul {
-      padding: $defaultPadding;
-      border-top: 1px solid #dddddd;
-
       &, li {
         outline: none;
       }
@@ -269,6 +264,7 @@ form {
 
   .form-ul {
     @include reset-list;
+
     li {
       margin-bottom: 10px;
     }
