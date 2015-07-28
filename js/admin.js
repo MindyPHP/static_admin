@@ -85,13 +85,13 @@ $(document).on('click', '#hide-sidebar', function (e) {
     return false;
 });
 
-$(document).on('click', '.flash-list .close', function (e) {
+$(document).on('click', '.flash-list .remove', function (e) {
     e.preventDefault();
-    var $list = $('.flash-list');
+    var $list = $(e.target).closest('.flash-list');
     if ($list.children().length == 1) {
         $list.hide();
     } else {
-        $(this).parent().hide();
+        $(this).closest('li').hide();
     }
     return false;
 });

@@ -15355,8 +15355,8 @@ p {
     .flash-list li .icon {
       cursor: pointer;
       font-weight: bold;
-      font-size: 2rem;
-      line-height: 2rem;
+      font-size: 1.4rem;
+      line-height: 1.8rem;
       opacity: 0.5;
       -moz-opacity: 0.5;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
