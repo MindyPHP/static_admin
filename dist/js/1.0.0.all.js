@@ -51247,8 +51247,15 @@ $(document).on('click', '#hide-sidebar', function (e) {
     e.preventDefault();
     var $sidebar = $('#sidebar-td');
     $sidebar.toggle();
-    $.cookie('sidebar-show', $sidebar.css('display') != 'none');
-    console.log($.cookie('sidebar-show'));
+
+    var isShow = $sidebar.css('display') != 'none';
+    $.cookie('sidebar-show', isShow);
+    var $content = $('#content-td');
+    if (isShow) {
+        $content.css('margin-left', 250);
+    } else {
+        $content.css('margin-left', 0);
+    }
     resizeButtonsBlock();
     return false;
 });
