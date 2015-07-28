@@ -14921,9 +14921,9 @@ fieldset {
   outline: 0 none;
   padding: 0;
   list-style: none;
-  font-size: 14px;
+  font-size: 0.9rem;
   padding: 10px;
-  margin: 25px;
+  margin: 0 0 10px 0;
   border: 1px solid #ff443a;
   background-color: #ffd7cf; }
   .form-errors.inline-errors {
@@ -14936,7 +14936,7 @@ fieldset {
       outline: 0 none;
       padding: 0;
       list-style: none;
-      font-size: 14px; }
+      font-size: 0.9rem; }
       .form-errors li ul li {
         font-weight: 400;
         margin-left: 15px; }

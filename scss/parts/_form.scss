@@ -24,9 +24,9 @@ fieldset {
 
 .form-errors {
   @include reset-list;
-  font-size: 14px;
+  font-size: .9rem;
   padding: 10px;
-  margin: $defaultPadding;
+  margin: 0 0 10px 0;
   border: 1px solid #ff443a;
   background-color: #ffd7cf;
 
@@ -36,9 +36,11 @@ fieldset {
 
   li {
     font-weight: 700;
+
     ul {
       @include reset-list;
-      font-size: 14px;
+      font-size: .9rem;
+
       li {
         font-weight: 400;
         margin-left: 15px;
