@@ -85,9 +85,11 @@ var paths = {
         // Ace.js is adependency for mail templates and ueditor
         'components/ace/ace.js',
         'components/ace/theme-clouds.js',
+        'components/ace/theme-crimson_editor.js',
         'components/ace/mode-html.js',
         'components/ace/mode-css.js',
         'components/ace/mode-javascript.js',
+        'components/ace/mode-twig.js',
         'components/ace/worker-html.js',
         'components/ace/worker-css.js',
         'components/ace/worker-javascript.js',
