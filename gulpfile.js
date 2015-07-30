@@ -82,6 +82,9 @@ var paths = {
         'vendor/semantic-ui/dist/components/tab.js',
         'vendor/semantic-ui/dist/components/transition.js',
 
+        // Emmet for ace.js
+        'components/emmet.js',
+
         // Ace.js is adependency for mail templates and ueditor
         'components/ace/ace.js',
         'components/ace/theme-clouds.js',
