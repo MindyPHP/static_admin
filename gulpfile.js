@@ -82,6 +82,23 @@ var paths = {
         'vendor/semantic-ui/dist/components/tab.js',
         'vendor/semantic-ui/dist/components/transition.js',
 
+        // Ace.js is adependency for mail templates and ueditor
+        'components/ace/ace.js',
+        'components/ace/theme-clouds.js',
+        'components/ace/mode-html.js',
+        'components/ace/mode-css.js',
+        'components/ace/mode-javascript.js',
+        'components/ace/worker-html.js',
+        'components/ace/worker-css.js',
+        'components/ace/worker-javascript.js',
+
+        // Codemirror is a dependency for ueditor
+        'vendor/codemirror/lib/codemirror.js',
+        'vendor/codemirror/mode/css/css.js',
+        'vendor/codemirror/mode/javascript/javascript.js',
+        'vendor/codemirror/mode/xml/xml.js',
+        'vendor/codemirror/mode/htmlmixed/htmlmixed.js',
+
         // https://github.com/nightwing/emmet-core
         'components/emmet.js',
         'components/mtooltip/mtooltip.js',
