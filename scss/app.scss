@@ -10,6 +10,7 @@
 @import "vendor/perfectscroll";
 @import "vendor/codemirror";
 @import "vendor/codemirror_theme";
+@import "vendor/ace";
 
 @import "parts/mixins";
 
@@ -158,7 +159,6 @@ fieldset {
 @import "modules/files";
 
 @import "parts/base";
-@import "parts/ace";
 @import "parts/info";
 @import "parts/sticky";
 @import "parts/buttons";
