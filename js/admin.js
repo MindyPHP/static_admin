@@ -1,7 +1,7 @@
 var resizeButtonsBlock = function () {
     $('.buttons-block').css($('#sidebar-td').css('display') != 'none' ? {
         width: $(document).width() - 250,
-        left: 251
+        left: 250
     } : {
         width: '100%',
         left: 0
@@ -76,11 +76,7 @@ $(document).on('click', '#hide-sidebar', function (e) {
     var isShow = $sidebar.css('display') != 'none';
     $.cookie('sidebar-show', isShow);
     var $content = $('#content-td');
-    if (isShow) {
-        $content.css('margin-left', 250);
-    } else {
-        $content.css('margin-left', 0);
-    }
+    $content.css('margin-left', isShow ? 250 : 0);
     resizeButtonsBlock();
     return false;
 });
