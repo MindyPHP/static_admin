@@ -91,6 +91,7 @@ var paths = {
         'components/ace/worker-html.js',
         'components/ace/worker-css.js',
         'components/ace/worker-javascript.js',
+        'components/ace/ext-emmet.js',
 
         // Codemirror is a dependency for ueditor
         'vendor/codemirror/lib/codemirror.js',
