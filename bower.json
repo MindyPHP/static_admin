@@ -19,7 +19,6 @@
     "semantic-ui": "~2.0.3",
     "perfect-scrollbar": "~0.6.3",
     "ueditor107": "*",
-    "tinymce107": "~1.0.0",
     "codemirror": "~5.5.0"
   }
 }

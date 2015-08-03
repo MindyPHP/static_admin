@@ -62,8 +62,6 @@ var paths = {
 
         'vendor/underscore/underscore.js',
 
-        'vendor/ckeditor/ckeditor.js',
-
         'vendor/meditor/js/utils.js',
         'vendor/meditor/js/core.js',
         'vendor/meditor/js/engine.js',
@@ -153,8 +151,8 @@ gulp.task('coffee', function() {
 });
 
 gulp.task('wysiwyg', function() {
-    return gulp.src('vendor/tinymce107/**/*')
-        .pipe(gulp.dest('dist/wysiwyg'));
+    return gulp.src('vendor/ueditor107/dist/**/*')
+        .pipe(gulp.dest('dist/ueditor107'));
 });
 
 gulp.task('js', ['coffee'], function() {
@@ -207,10 +205,10 @@ gulp.task('clean', function() {
     }).pipe(clean());
 });
 
-gulp.task('build', function() {
+gulp.task('build', ['clean'], function() {
     return gulp.start('js', 'css', 'images', 'fonts', 'wysiwyg');
 });
 
-gulp.task('default', ['clean'], function() {
+gulp.task('default', function() {
     return gulp.start('build');
 });
