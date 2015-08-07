@@ -30,6 +30,25 @@ $(function () {
     //    $(this).next().toggle();
     //});
 
+    var searchTimer;
+    $(document).on('keyup', '#search-input', function (e) {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () {
+            $.ajax({
+                url: '',
+                type: 'POST',
+                data: {
+                    search: e.target.value
+                },
+                success: function (data) {
+                    $('#main-form').replaceWith(data);
+                    var $searchInput = $('#search-input');
+                    $searchInput.focus().val($searchInput.val());
+                }
+            })
+        }.bind(this), 550);
+    });
+
     var selector = '',
         types = ['jpg', 'jpeg', 'png', 'gif'];
     for (var i = 0; i < types.length; i++) {
