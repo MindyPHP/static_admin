@@ -15644,7 +15644,7 @@ UE.plugins['list'] = function () {
             // Hide deprecate warning
             aceEditor.$blockScrolling = Infinity;
 
-            aceEditor.setTheme("ace/theme/clouds");
+            aceEditor.setTheme("ace/theme/crimson_editor");
             aceEditor.setFontSize('.9rem');
             aceEditor.getSession().setMode("ace/mode/html");
             aceEditor.getSession().setTabSize(4);
