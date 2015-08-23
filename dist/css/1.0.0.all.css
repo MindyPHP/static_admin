@@ -15144,7 +15144,29 @@ fieldset legend {
 .model-info thead tr td.first, .model-info tbody tr td.first {
   width: 250px; }
 .model-info thead tr td.nested, .model-info tbody tr td.nested {
-  padding: 10px 0 !important; }
+  padding: 0 !important;
+  border: 0; }
+  .model-info thead tr td.nested .nested-container, .model-info tbody tr td.nested .nested-container {
+    background-color: #f1f1f1;
+    position: relative;
+    padding: 10px; }
+    .model-info thead tr td.nested .nested-container::after, .model-info tbody tr td.nested .nested-container::after {
+      bottom: 100%;
+      right: 25px;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(241, 241, 241, 0);
+      border-bottom-color: #f1f1f1;
+      border-width: 8px;
+      margin-left: -8px; }
+    .model-info thead tr td.nested .nested-container table, .model-info tbody tr td.nested .nested-container table {
+      border: 0; }
+      .model-info thead tr td.nested .nested-container table tr td, .model-info thead tr td.nested .nested-container table tr th, .model-info tbody tr td.nested .nested-container table tr td, .model-info tbody tr td.nested .nested-container table tr th {
+        background-color: #f1f1f1; }
 
 .sticky.stuck {
   position: fixed; }
