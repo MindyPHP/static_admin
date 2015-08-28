@@ -19685,6 +19685,8 @@ UE.plugins['table'] = function () {
         me.addListener('blur', function () {
             tableCopyList = null;
         });
+        // Issue https://github.com/studio107/ueditor-fork/issues/1
+        /*
         var timer;
         me.addListener('keydown', function () {
             clearTimeout(timer);
@@ -19700,6 +19702,7 @@ UE.plugins['table'] = function () {
 
             }, 100);
         });
+        */
         me.addListener("selectionchange", function () {
             toggleDraggableState(me, false, "", null);
         });
