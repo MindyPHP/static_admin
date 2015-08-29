@@ -23703,6 +23703,7 @@ UE.plugins['insertcode'] = function () {
         'plain': 'Plain Text',
         'ps': 'PowerShell',
         'python': 'Python',
+        'go': 'Golang',
         'ruby': 'Ruby',
         'scala': 'Scala',
         'sql': 'Sql',
