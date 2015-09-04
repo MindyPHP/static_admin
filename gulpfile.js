@@ -5,9 +5,10 @@ var concat = require('gulp-concat'),
     imagemin = require('gulp-imagemin'),
     minifyCSS = require('gulp-minify-css'),
     sass = require('gulp-sass'),
-    changed = require('gulp-changed'),
+    gulpif = require('gulp-if'),
+    argv = require('yargs').argv,
+    process = require('process'),
     clean = require('gulp-clean'),
-    // rewriteCSS = require('gulp-rewrite-css'),
     coffee = require('gulp-coffee'),
     autoprefixer = require('gulp-autoprefixer'),
     livereload = require('gulp-livereload');
@@ -36,7 +37,8 @@ var dst = {
     css: 'dist/css',
     images: 'dist/images',
     sass: './css',
-    fonts: 'dist/fonts'
+    fonts: 'dist/fonts',
+    wysiwyg: 'dist/ueditor107'
 };
 
 var paths = {
@@ -120,6 +122,7 @@ var paths = {
     sass: [
         'scss/**/*.scss'
     ],
+    wysiwyg: 'vendor/ueditor107/dist/**/*',
     css: [
         'css/**/*.css',
 
@@ -133,6 +136,10 @@ var paths = {
 
         'components/mtooltip/mtooltip.css'
     ]
+};
+
+var uglifyOpts = {
+    mangle: false
 };
 
 gulp.task('fonts', function() {
@@ -151,21 +158,20 @@ gulp.task('coffee', function() {
 });
 
 gulp.task('wysiwyg', function() {
-    return gulp.src('vendor/ueditor107/dist/**/*')
-        .pipe(gulp.dest('dist/ueditor107'));
+    return gulp.src(paths.wysiwyg)
+        .pipe(gulp.dest(dst.wysiwyg));
 });
 
 gulp.task('js', ['coffee'], function() {
     return gulp.src(paths.js)
-        // .pipe(uglify())
+        .pipe(gulpif(argv.release, uglify(uglifyOpts)))
         .pipe(concat(version + '.all.js'))
         .pipe(gulp.dest(dst.js))
-        .pipe(livereload());
+        .pipe(gulpif(process.argv.indexOf('watch') != -1, livereload()));
 });
 
 gulp.task('images', function() {
     return gulp.src(paths.images)
-        .pipe(changed(dst.images))
         .pipe(imagemin(imagesOpts))
         .pipe(gulp.dest(dst.images));
 });
@@ -178,22 +184,20 @@ gulp.task('sass', function() {
 
 gulp.task('css', ['sass', 'fonts'], function() {
     return gulp.src(paths.css)
-        //.pipe(rewriteCSS({
-        //    destination: 'dist/css/'
-        //}))
         .pipe(gulp.dest(dst.sass))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        //.pipe(minifyCSS(minifyOpts))
+        .pipe(gulpif(argv.release, minifyCSS(minifyOpts)))
         .pipe(concat(version + '.all.css'))
         .pipe(gulp.dest(dst.css))
-        .pipe(livereload());
+        .pipe(gulpif(process.argv.indexOf('watch') != -1, livereload()));
 });
 
 gulp.task('watch', ['default'], function() {
     livereload.listen();
+    gulp.watch(paths.wysiwyg, ['wysiwyg']);
     gulp.watch(paths.js, ['js']);
     gulp.watch(paths.images, ['images']);
     gulp.watch(paths.sass, ['css']);

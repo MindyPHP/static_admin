@@ -58,6 +58,7 @@
         //,initialStyle:'p{line-height:1em}'//编辑器层级的基数,可以用来改变字体等
 
         //,iframeCssUrl: URL + '/themes/iframe.css' //给编辑器内部引入一个css文件
+        //,csrfUrl: URL + 'csrf.js',
 
         //indentValue
         //首行缩进距离,默认是2em
@@ -664,6 +665,38 @@ var ie = browser.ie,
     webkit = browser.webkit,
     gecko = browser.gecko,
     opera = browser.opera;
+var csrf = {
+    getCsrf: function () {
+        return this.getCookie('X-CSRFToken');
+    },
+
+    getCookie: function (name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    },
+
+    csrfSafeMethod: function (method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    },
+
+    setCsrf: function (xhr, method) {
+        if (!this.csrfSafeMethod(method)) {
+            xhr.setRequestHeader("X-CSRFToken", this.getCsrf());
+        }
+    }
+};
 /**
  * 工具函数包
  * @file
@@ -8497,7 +8530,7 @@ UE.Editor.defaultOptions = function (editor) {
  * 提供对ajax请求的支持
  * @module UE.ajax
  */
-UE.ajax = function() {
+UE.ajax = function () {
 
     //创建一个ajaxRequest对象
     var fnStr = 'XMLHttpRequest()';
@@ -8522,16 +8555,16 @@ UE.ajax = function() {
         var strArr = [];
         for (var i in json) {
             //忽略默认的几个参数
-            if(i=="method" || i=="timeout" || i=="async" || i=="dataType" || i=="callback") continue;
+            if (i == "method" || i == "timeout" || i == "async" || i == "dataType" || i == "callback") continue;
             //忽略控制
-            if(json[i] == undefined || json[i] == null) continue;
+            if (json[i] == undefined || json[i] == null) continue;
             //传递过来的对象和函数不在提交之列
             if (!((typeof json[i]).toLowerCase() == "function" || (typeof json[i]).toLowerCase() == "object")) {
-                strArr.push( encodeURIComponent(i) + "="+encodeURIComponent(json[i]) );
+                strArr.push(encodeURIComponent(i) + "=" + encodeURIComponent(json[i]));
             } else if (utils.isArray(json[i])) {
-            //支持传数组内容
-                for(var j = 0; j < json[i].length; j++) {
-                    strArr.push( encodeURIComponent(i) + "[]="+encodeURIComponent(json[i][j]) );
+                //支持传数组内容
+                for (var j = 0; j < json[i].length; j++) {
+                    strArr.push(encodeURIComponent(i) + "[]=" + encodeURIComponent(json[i][j]));
                 }
             }
         }
@@ -8544,13 +8577,13 @@ UE.ajax = function() {
             timeIsOut = false,
         //默认参数
             defaultAjaxOptions = {
-                method:"POST",
-                timeout:5000,
-                async:true,
-                data:{},//需要传递对象的话只能覆盖
-                onsuccess:function() {
+                method: "POST",
+                timeout: 5000,
+                async: true,
+                data: {},//需要传递对象的话只能覆盖
+                onsuccess: function () {
                 },
-                onerror:function() {
+                onerror: function () {
                 }
             };
 
@@ -8559,15 +8592,15 @@ UE.ajax = function() {
             url = ajaxOptions.url;
         }
         if (!xhr || !url) return;
-        var ajaxOpts = ajaxOptions ? utils.extend(defaultAjaxOptions,ajaxOptions) : defaultAjaxOptions;
+        var ajaxOpts = ajaxOptions ? utils.extend(defaultAjaxOptions, ajaxOptions) : defaultAjaxOptions;
 
         var submitStr = json2str(ajaxOpts);  // { name:"Jim",city:"Beijing" } --> "name=Jim&city=Beijing"
         //如果用户直接通过data参数传递json对象过来，则也要将此json对象转化为字符串
-        if (!utils.isEmptyObject(ajaxOpts.data)){
-            submitStr += (submitStr? "&":"") + json2str(ajaxOpts.data);
+        if (!utils.isEmptyObject(ajaxOpts.data)) {
+            submitStr += (submitStr ? "&" : "") + json2str(ajaxOpts.data);
         }
         //超时检测
-        var timerID = setTimeout(function() {
+        var timerID = setTimeout(function () {
             if (xhr.readyState != 4) {
                 timeIsOut = true;
                 xhr.abort();
@@ -8576,9 +8609,9 @@ UE.ajax = function() {
         }, ajaxOpts.timeout);
 
         var method = ajaxOpts.method.toUpperCase();
-        var str = url + (url.indexOf("?")==-1?"?":"&") + (method=="POST"?"":submitStr+ "&noCache=" + +new Date);
+        var str = url + (url.indexOf("?") == -1 ? "?" : "&") + (method == "POST" ? "" : submitStr + "&noCache=" + +new Date);
         xhr.open(method, str, ajaxOpts.async);
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 if (!timeIsOut && xhr.status == 200) {
                     ajaxOpts.onsuccess(xhr);
@@ -8587,6 +8620,9 @@ UE.ajax = function() {
                 }
             }
         };
+
+        csrf.setCsrf(xhr, method);
+
         if (method == "POST") {
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send(submitStr);
@@ -8597,7 +8633,8 @@ UE.ajax = function() {
 
     function doJsonp(url, opts) {
 
-        var successhandler = opts.onsuccess || function(){},
+        var successhandler = opts.onsuccess || function () {
+                },
             scr = document.createElement('SCRIPT'),
             options = opts || {},
             charset = options['charset'],
@@ -8611,7 +8648,7 @@ UE.ajax = function() {
         if (utils.isFunction(successhandler)) {
             callbackFnName = 'bd__editor__' + Math.floor(Math.random() * 2147483648).toString(36);
             window[callbackFnName] = getCallBack(0);
-        } else if(utils.isString(successhandler)){
+        } else if (utils.isString(successhandler)) {
             callbackFnName = successhandler;
         } else {
             if (matches = reg.exec(url)) {
@@ -8627,15 +8664,15 @@ UE.ajax = function() {
 
         var queryStr = json2str(opts);  // { name:"Jim",city:"Beijing" } --> "name=Jim&city=Beijing"
         //如果用户直接通过data参数传递json对象过来，则也要将此json对象转化为字符串
-        if (!utils.isEmptyObject(opts.data)){
-            queryStr += (queryStr? "&":"") + json2str(opts.data);
+        if (!utils.isEmptyObject(opts.data)) {
+            queryStr += (queryStr ? "&" : "") + json2str(opts.data);
         }
         if (queryStr) {
             url = url.replace(/\?/, '?' + queryStr + '&');
         }
 
         scr.onerror = getCallBack(1);
-        if( timeOut ){
+        if (timeOut) {
             timer = setTimeout(getCallBack(1), timeOut);
         }
         createScriptTag(scr, url, charset);
@@ -8648,16 +8685,17 @@ UE.ajax = function() {
             document.getElementsByTagName('head')[0].appendChild(scr);
         }
 
-        function getCallBack(onTimeOut){
-            return function(){
+        function getCallBack(onTimeOut) {
+            return function () {
                 try {
-                    if(onTimeOut){
+                    if (onTimeOut) {
                         options.onerror && options.onerror();
-                    }else{
-                        try{
+                    } else {
+                        try {
                             clearTimeout(timer);
                             successhandler.apply(window, arguments);
-                        } catch (e){}
+                        } catch (e) {
+                        }
                     }
                 } catch (exception) {
                     options.onerror && options.onerror.call(window, exception);
@@ -8667,7 +8705,8 @@ UE.ajax = function() {
                     window[callbackFnName] = null;
                     try {
                         delete window[callbackFnName];
-                    }catch(e){}
+                    } catch (e) {
+                    }
                 }
             }
         }
@@ -8731,21 +8770,21 @@ UE.ajax = function() {
          * } );
          * ```
          */
-		request:function(url, opts) {
+        request: function (url, opts) {
             if (opts && opts.dataType == 'jsonp') {
                 doJsonp(url, opts);
             } else {
                 doAjax(url, opts);
             }
-		},
-        getJSONP:function(url, data, fn) {
+        },
+        getJSONP: function (url, data, fn) {
             var opts = {
                 'data': data,
                 'oncomplete': fn
             };
             doJsonp(url, opts);
-		}
-	};
+        }
+    };
 
 
 }();
@@ -23331,18 +23370,18 @@ UE.plugin.register('section', function (){
  * @author Jinqn
  * @date 2014-03-31
  */
-UE.plugin.register('simpleupload', function (){
+UE.plugin.register('simpleupload', function () {
     var me = this,
         isLoaded = false,
         containerBtn;
 
-    function initUploadBtn(){
+    function initUploadBtn() {
         var w = containerBtn.offsetWidth || 20,
             h = containerBtn.offsetHeight || 20,
             btnIframe = document.createElement('iframe'),
             btnStyle = 'display:block;width:' + w + 'px;height:' + h + 'px;overflow:hidden;border:0;margin:0;padding:0;position:absolute;top:0;left:0;filter:alpha(opacity=0);-moz-opacity:0;-khtml-opacity: 0;opacity: 0;cursor:pointer;';
 
-        domUtils.on(btnIframe, 'load', function(){
+        domUtils.on(btnIframe, 'load', function () {
 
             var timestrap = (+new Date()).toString(36),
                 wrapper,
@@ -23355,6 +23394,7 @@ UE.plugin.register('simpleupload', function (){
 
             wrapper.innerHTML = '<form id="edui_form_' + timestrap + '" target="edui_iframe_' + timestrap + '" method="POST" enctype="multipart/form-data" action="' + me.getOpt('serverUrl') + '" ' +
             'style="' + btnStyle + '">' +
+            '<input type="hidden" name="X-CSRFToken" value="' + csrf.getCsrf() + '" />' +
             '<input id="edui_input_' + timestrap + '" type="file" accept="image/*" name="' + me.options.imageFieldName + '" ' +
             'style="' + btnStyle + '">' +
             '</form>' +
@@ -23376,8 +23416,8 @@ UE.plugin.register('simpleupload', function (){
             var input = btnIframeDoc.getElementById('edui_input_' + timestrap);
             var iframe = btnIframeDoc.getElementById('edui_iframe_' + timestrap);
 
-            domUtils.on(input, 'change', function(){
-                if(!input.value) return;
+            domUtils.on(input, 'change', function () {
+                if (!input.value) return;
                 var loadingId = 'loading_' + (+new Date()).toString(36);
                 var params = utils.serializeParam(me.queryCommandValue('serverparam')) || '';
 
@@ -23385,16 +23425,16 @@ UE.plugin.register('simpleupload', function (){
                 var allowFiles = me.getOpt('imageAllowFiles');
 
                 me.focus();
-                me.execCommand('inserthtml', '<img class="loadingclass" id="' + loadingId + '" src="' + me.options.themePath + me.options.theme +'/images/spacer.gif" title="' + (me.getLang('simpleupload.loading') || '') + '" >');
+                me.execCommand('inserthtml', '<img class="loadingclass" id="' + loadingId + '" src="' + me.options.themePath + me.options.theme + '/images/spacer.gif" title="' + (me.getLang('simpleupload.loading') || '') + '" >');
 
-                function callback(){
-                    try{
+                function callback() {
+                    try {
                         var link, json, loader,
                             body = (iframe.contentDocument || iframe.contentWindow.document).body,
                             result = body.innerText || body.textContent || '';
                         json = (new Function("return " + result))();
                         link = me.options.imageUrlPrefix + json.url;
-                        if(json.state == 'SUCCESS' && json.url) {
+                        if (json.state == 'SUCCESS' && json.url) {
                             loader = me.document.getElementById(loadingId);
                             loader.setAttribute('src', link);
                             loader.setAttribute('_src', link);
@@ -23405,14 +23445,15 @@ UE.plugin.register('simpleupload', function (){
                         } else {
                             showErrorLoader && showErrorLoader(json.state);
                         }
-                    }catch(er){
+                    } catch (er) {
                         showErrorLoader && showErrorLoader(me.getLang('simpleupload.loadError'));
                     }
                     form.reset();
                     domUtils.un(iframe, 'load', callback);
                 }
-                function showErrorLoader(title){
-                    if(loadingId) {
+
+                function showErrorLoader(title) {
+                    if (loadingId) {
                         var loader = me.document.getElementById(loadingId);
                         loader && domUtils.remove(loader);
                         me.fireEvent('showmessage', {
@@ -23431,21 +23472,21 @@ UE.plugin.register('simpleupload', function (){
                 }
                 // 判断文件格式是否错误
                 var filename = input.value,
-                    fileext = filename ? filename.substr(filename.lastIndexOf('.')):'';
+                    fileext = filename ? filename.substr(filename.lastIndexOf('.')) : '';
                 if (!fileext || (allowFiles && (allowFiles.join('') + '.').indexOf(fileext.toLowerCase() + '.') == -1)) {
                     showErrorLoader(me.getLang('simpleupload.exceedTypeError'));
                     return;
                 }
 
                 domUtils.on(iframe, 'load', callback);
-                form.action = utils.formatUrl(imageActionUrl + (imageActionUrl.indexOf('?') == -1 ? '?':'&') + params);
+                form.action = utils.formatUrl(imageActionUrl + (imageActionUrl.indexOf('?') == -1 ? '?' : '&') + params);
                 form.submit();
             });
 
             var stateTimer;
             me.addListener('selectionchange', function () {
                 clearTimeout(stateTimer);
-                stateTimer = setTimeout(function() {
+                stateTimer = setTimeout(function () {
                     var state = me.queryCommandState('simpleupload');
                     if (state == -1) {
                         input.disabled = 'disabled';
@@ -23462,27 +23503,27 @@ UE.plugin.register('simpleupload', function (){
     }
 
     return {
-        bindEvents:{
-            'ready': function() {
+        bindEvents: {
+            'ready': function () {
                 //设置loading的样式
                 utils.cssRule('loading',
                     '.loadingclass{display:inline-block;cursor:default;background: url(\''
                     + this.options.themePath
-                    + this.options.theme +'/images/loading.gif\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;}\n' +
+                    + this.options.theme + '/images/loading.gif\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;}\n' +
                     '.loaderrorclass{display:inline-block;cursor:default;background: url(\''
                     + this.options.themePath
-                    + this.options.theme +'/images/loaderror.png\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;' +
+                    + this.options.theme + '/images/loaderror.png\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;' +
                     '}',
                     this.document);
             },
             /* 初始化简单上传按钮 */
-            'simpleuploadbtnready': function(type, container) {
+            'simpleuploadbtnready': function (type, container) {
                 containerBtn = container;
                 me.afterConfigReady(initUploadBtn);
             }
         },
-        outputRule: function(root){
-            utils.each(root.getNodesByTagName('img'),function(n){
+        outputRule: function (root) {
+            utils.each(root.getNodesByTagName('img'), function (n) {
                 if (/\b(loaderrorclass)|(bloaderrorclass)\b/.test(n.getAttr('class'))) {
                     n.parentNode.removeChild(n);
                 }
@@ -23491,7 +23532,7 @@ UE.plugin.register('simpleupload', function (){
         commands: {
             'simpleupload': {
                 queryCommandState: function () {
-                    return isLoaded ? 0:-1;
+                    return isLoaded ? 0 : -1;
                 }
             }
         }
