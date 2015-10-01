@@ -70,7 +70,7 @@
 
             flow.on('complete', function(){
                 $(me.element).find('.progress_bar').css({
-                    'width': '100%'
+                    'width': '0%'
                 });
                 me.updateList();
             });
@@ -99,13 +99,13 @@
         },
         initList: function() {
             var me = this;
-            $("#" + this.options.listId).dragsort({
-                dragSelector: "li",
-                placeHolderTemplate: "<li class='empty'></li>",
-                dragEnd: function() {
+            $("#" + this.options.listId).sortable({
+                placeholder: "empty",
+
+                update: function (event, ui) {
                     me.sort();
                 }
-            });
+            }).disableSelection();
         },
         sort: function() {
             var pk = [];
@@ -130,15 +130,16 @@
             var me = this;
             var data = me.options.deleteData;
             data['pk'] = pk;
+            $('#' + me.options.listId).find('[data-pk="'+pk+'"]').fadeOut(300, function(){
+                $(this).remove();
+                me.checkEmpty();
+            });
             $.ajax({
                 'type': 'post',
                 'url': me.options.deleteUrl,
                 'data': data,
                 'success': function(){
-                    $('#' + me.options.listId).find('[data-pk="'+pk+'"]').fadeOut(300, function(){
-                        $(this).remove();
-                        me.checkEmpty();
-                    });
+
                 }
             });
         }
