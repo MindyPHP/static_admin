@@ -151,6 +151,11 @@ fieldset {
     font-size: 0.7rem;
   }
 }
+input[type=file]{
+  width: auto;
+  cursor: pointer;
+}
+
 
 #hide-sidebar {
   display: block;
