@@ -78,6 +78,7 @@
 
             var flow = new Flow({
                 target: this.options.uploadUrl,
+                testChunks: false,
                 query: query
             });
 
@@ -127,13 +128,13 @@
                 }
             });
 
-            this.$element.on('click', '.files .file-name', function (e) {
-                e.preventDefault();
-                $(this).find('a').click();
-                return false;
-            });
+            //this.$element.on('click', '.files .file-name', function (e) {
+            //    e.preventDefault();
+            //    $(this).find('a').click();
+            //    return false;
+            //});
 
-            this.$element.on('click', '.files .file .file-link', function (e) {
+            this.$element.on('click', '.files .file .file-link.open-file', function (e) {
                 e.preventDefault();
                 me.openFile($(this).data('url'));
                 return false;
@@ -190,7 +191,7 @@
         },
         showDropInfo: function() {
             var fileman = this.$element;
-            if (!fileman.hasClass('frop'))
+            if (!fileman.hasClass('drop'))
                 fileman.addClass('drop');
         },
         hideDropInfo: function() {

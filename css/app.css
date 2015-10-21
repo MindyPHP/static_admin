@@ -14944,17 +14944,20 @@ fieldset legend {
       .file-manager .drop-info .info-table .cell, .file-manager .uploading-info .info-table .cell {
         display: table-cell;
         vertical-align: middle; }
-  .file-manager table .file-icon {
+  .file-manager table tr .file-icon {
     width: 35px; }
-  .file-manager table .file-check {
+  .file-manager table tr .file-check {
     width: 35px;
     vertical-align: middle;
     padding-left: 0; }
-    .file-manager table .file-check input {
+    .file-manager table tr .file-check input {
       margin: 0; }
-  .file-manager table .file-name {
-    cursor: pointer; }
-  .file-manager table .file-actions {
+  .file-manager table tr .file-name {
+    cursor: pointer;
+    padding: 0 !important; }
+    .file-manager table tr .file-name a {
+      display: block; }
+  .file-manager table tr .file-actions {
     width: 35px; }
   .file-manager table a {
     text-decoration: none; }

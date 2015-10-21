@@ -46,28 +46,34 @@
   }
 
   table {
-    .file-icon{
-      width: 35px;
-    }
+    tr {
+      .file-icon{
+        width: 35px;
+      }
 
-    .file-check{
-      width: 35px;
-      vertical-align: middle;
-      padding-left: 0;
+      .file-check{
+        width: 35px;
+        vertical-align: middle;
+        padding-left: 0;
 
-      input {
-        margin: 0;
+        input {
+          margin: 0;
+        }
+      }
+
+      .file-name {
+        cursor: pointer;
+        padding: 0 !important;
+
+        a {
+          display: block;
+        }
+      }
+
+      .file-actions{
+        width: 35px;
       }
     }
-
-    .file-name {
-      cursor: pointer;
-    }
-
-    .file-actions{
-      width: 35px;
-    }
-
     a {
       text-decoration: none;
     }
