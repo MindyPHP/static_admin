@@ -52,11 +52,12 @@ $(function () {
     var selector = '',
         types = ['jpg', 'jpeg', 'png', 'gif'];
     for (var i = 0; i < types.length; i++) {
-        selector += "a[href$='." + types[i].toLowerCase() + "'],a[href$='." + types[i].toUpperCase() + "']";
+        selector += "a[href$='." + types[i].toLowerCase() + "']:not(.ignore-fancy),a[href$='." + types[i].toUpperCase() + "']:not(.ignore-fancy)";
         if (i + 1 != types.length) {
             selector += ",";
         }
     }
+
     var $linkWithImage = $(selector);
     $linkWithImage
         .attr('rel', 'fancybox')
