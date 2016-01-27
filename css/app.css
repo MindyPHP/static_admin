@@ -15256,10 +15256,11 @@ input[type=file] {
         border-bottom: 1px solid #f4f4f4; }
         #wrapper-table #content-td .overflow-wrapper #table-main thead tr th {
           font-size: 0.8rem;
-          text-transform: capitalize;
           color: #616161; }
           #wrapper-table #content-td .overflow-wrapper #table-main thead tr th:hover {
             background-color: #f4f4f4 !important; }
+          #wrapper-table #content-td .overflow-wrapper #table-main thead tr th:first-letter {
+            text-transform: uppercase; }
           #wrapper-table #content-td .overflow-wrapper #table-main thead tr th a {
             color: #616161; }
             #wrapper-table #content-td .overflow-wrapper #table-main thead tr th a:hover {
@@ -15278,15 +15279,14 @@ input[type=file] {
           text-decoration: underline; }
       #wrapper-table #content-td .overflow-wrapper #table-main tbody tr td.sorting, #wrapper-table #content-td .overflow-wrapper #table-main thead tr td.sorting {
         cursor: move; }
-      #wrapper-table #content-td .overflow-wrapper #table-main tbody tr th.sorting, #wrapper-table #content-td .overflow-wrapper #table-main thead tr th.sorting {
-        width: 40px; }
       #wrapper-table #content-td .overflow-wrapper #table-main tbody tr td, #wrapper-table #content-td .overflow-wrapper #table-main tbody tr th, #wrapper-table #content-td .overflow-wrapper #table-main thead tr td, #wrapper-table #content-td .overflow-wrapper #table-main thead tr th {
-        padding: 0 5px;
-        height: 32px;
-        line-height: 32px; }
+        padding: 8px;
+        line-height: 1.3; }
         #wrapper-table #content-td .overflow-wrapper #table-main tbody tr td.td-id, #wrapper-table #content-td .overflow-wrapper #table-main tbody tr td.th-id, #wrapper-table #content-td .overflow-wrapper #table-main tbody tr th.td-id, #wrapper-table #content-td .overflow-wrapper #table-main tbody tr th.th-id, #wrapper-table #content-td .overflow-wrapper #table-main thead tr td.td-id, #wrapper-table #content-td .overflow-wrapper #table-main thead tr td.th-id, #wrapper-table #content-td .overflow-wrapper #table-main thead tr th.td-id, #wrapper-table #content-td .overflow-wrapper #table-main thead tr th.th-id {
           width: 40px;
           text-align: center; }
+        #wrapper-table #content-td .overflow-wrapper #table-main tbody tr td.sorting, #wrapper-table #content-td .overflow-wrapper #table-main tbody tr th.sorting, #wrapper-table #content-td .overflow-wrapper #table-main thead tr td.sorting, #wrapper-table #content-td .overflow-wrapper #table-main thead tr th.sorting {
+          width: 32px; }
         #wrapper-table #content-td .overflow-wrapper #table-main tbody tr td.check, #wrapper-table #content-td .overflow-wrapper #table-main tbody tr th.check, #wrapper-table #content-td .overflow-wrapper #table-main thead tr td.check, #wrapper-table #content-td .overflow-wrapper #table-main thead tr th.check {
           text-align: center;
           width: 32px; }
@@ -15523,16 +15523,16 @@ form {
   form.save-update .form-block {
     padding: 0 25px; }
   form.save-update fieldset {
-    padding: 25px 0 25px;
+    padding: 50px 0 25px;
     margin: 0;
     position: relative;
     border-width: 1px 0 0; }
     form.save-update fieldset legend {
       position: absolute;
-      top: -10px;
+      top: 15px;
       text-transform: uppercase;
       font-size: 0.8rem;
-      font-weight: 700; }
+      font-weight: 800; }
     form.save-update fieldset .form-ul, form.save-update fieldset .form-block {
       padding: 0;
       border-top: none; }
@@ -15585,8 +15585,16 @@ form {
   form .form-block {
     margin-bottom: 15px; }
   form label {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    color: #747474; }
+    form label:after {
+      content: ':'; }
+  form input[type="radio"] + label, form input[type="checkbox"] + label {
     font-size: 0.9rem;
-    margin-bottom: 4px; }
+    color: #4d4d4d; }
+    form input[type="radio"] + label:after, form input[type="checkbox"] + label:after {
+      display: none; }
   form ul.error {
     list-style: none;
     margin: 0;
@@ -15602,11 +15610,21 @@ form {
         font-weight: normal;
         font-style: normal;
         margin-right: 10px; }
-  form select[multiple] {
-    min-height: 120px;
-    height: auto; }
-  form input, form select {
+  form select {
+    border: 1px solid #e4e4e4; }
+    form select[multiple] {
+      min-height: 120px;
+      height: auto;
+      background-image: none;
+      -webkit-border-radius: 0;
+      -khtml-border-radius: 0;
+      -moz-border-radius: 0;
+      -o-border-radius: 0;
+      border-radius: 0; }
+  form input, form select, form textarea {
     margin: 0 !important; }
+  form textarea, form input[type="text"], form input[type="password"], form input[type="email"], form input[type="phone"] {
+    border: 1px solid #e4e4e4; }
   form .form-ul {
     margin: 0;
     border: 0 none;
@@ -15614,7 +15632,7 @@ form {
     padding: 0;
     list-style: none; }
     form .form-ul li {
-      margin-bottom: 10px; }
+      margin-bottom: 12px; }
   form .form-inline-table tbody tr th, form .form-inline-table tbody tr td, form .form-inline-table tfoot tr th, form .form-inline-table tfoot tr td, form .form-inline-table thead tr th, form .form-inline-table thead tr td {
     vertical-align: top; }
     form .form-inline-table tbody tr th.actions, form .form-inline-table tbody tr td.actions, form .form-inline-table tfoot tr th.actions, form .form-inline-table tfoot tr td.actions, form .form-inline-table thead tr th.actions, form .form-inline-table thead tr td.actions {
@@ -15622,9 +15640,11 @@ form {
     form .form-inline-table tbody tr th label, form .form-inline-table tbody tr td label, form .form-inline-table tfoot tr th label, form .form-inline-table tfoot tr td label, form .form-inline-table thead tr th label, form .form-inline-table thead tr td label {
       color: #95A5A6; }
   form .form-hint-text {
-    font-size: 0.9rem;
-    color: #616161;
-    margin-bottom: 5px; }
+    font-size: 0.8rem;
+    color: #9b9b9b;
+    margin-bottom: 5px;
+    font-style: italic;
+    margin-top: 3px; }
 
 .errorMessage {
   color: #C0392B; }
@@ -15652,8 +15672,27 @@ textarea {
     color: #a00; }
 
 #filter-form {
-  padding: 0 20px;
-  margin: 20px 0; }
+  padding: 20px 25px;
+  background-color: #f5f5f5;
+  width: 60%;
+  margin: 8px 0 10px; }
+  #filter-form .button {
+    padding: 9px 16px; }
+  #filter-form .form-lines .form-line {
+    margin-bottom: 7px; }
+    #filter-form .form-lines .form-line .label-block {
+      float: left;
+      width: 150px;
+      height: 39px;
+      line-height: 36px; }
+      #filter-form .form-lines .form-line .label-block label {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1.3; }
+    #filter-form .form-lines .form-line .value-block {
+      margin-left: 160px; }
+  #filter-form .button-line {
+    padding-top: 5px; }
 
 .tabs {
   outline: none; }
@@ -15739,10 +15778,19 @@ textarea {
       width: 200px;
       border: 1px solid rgba(34, 36, 38, 0.15);
       border-radius: 0.28571rem 0 0 0.28571rem;
-      margin: 0 -3px 0 5px !important; }
+      margin: 0 -3px 0 5px !important;
+      padding: 0.2rem 0.5rem;
+      -webkit-appearance: none;
+      -khtml-appearance: none;
+      -moz-appearance: none;
+      -o-appearance: none;
+      appearance: none; }
+    .toolbar td.toolbar-actions-td .create.button, .toolbar td.toolbar-actions-td .input.action {
+      vertical-align: middle; }
   .toolbar td.toolbar-search-td {
     padding: 0 0 0 5px !important; }
     .toolbar td.toolbar-search-td input {
+      padding: 0.2em 1em;
       width: 200px; }
 
 input, select {

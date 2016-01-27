@@ -88,20 +88,19 @@ $(document).on('click', '.toolbar .exit-search', function (e) {
     return false;
 });
 
-$(document).on('keydown', '.toolbar .search-toolbar input', function (e) {
+$(document).on('keydown', '.toolbar .toolbar-search-td input', function (e) {
     if (e.keyCode == 13) {
         e.preventDefault();
         return false;
     }
 });
 
-$(document).on('keyup', '.toolbar .search-toolbar input', function (e) {
+var updateTimer;
+$(document).on('keyup', '.toolbar .toolbar-search-td input', function (e) {
     e.preventDefault();
 
-    var searchVar = 'search',
-        $this = $(this),
-        updateTimer;
-
+    var searchVar = 'search';
+    var $this = $(this);
     if (e.keyCode == 27) {
         $('.toolbar').removeClass('search');
         $('.page-size').removeClass('search');
@@ -110,7 +109,6 @@ $(document).on('keyup', '.toolbar .search-toolbar input', function (e) {
         updateTimer = setTimeout(function () {
             var $list = $('#list');
             var url = $list.data('path');
-
             url = url.replace(new RegExp("(&|\\?)" + searchVar + "=.*?(&|$)", 'g'), function (str, p1, p2, offset, s) {
                 if (p1 == '?') {
                     return '?';
