@@ -47,7 +47,6 @@
     }
 
     .datetime {
-      @include antialias();
       font-style: italic;
       color: $semiDarkGrey;
     }

@@ -29,14 +29,15 @@ $defaultPadding: 25px;
 
 // Foundation
 
-$body-font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+//$body-font-family: "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: Lato, "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 $button-med: rem-calc(6);
 $button-font-med: rem-calc(14);
 $input-font-size: rem-calc(16);
 $input-bg-color: #fff;
 $input-focus-bg-color: $input-bg-color;
-$input-focus-border-color: #57B2D8;
+$input-focus-border-color: #2185d0;
 $input-border-width: 1px;
 $input-box-shadow: none;
 $input-include-glowing-effect: false;

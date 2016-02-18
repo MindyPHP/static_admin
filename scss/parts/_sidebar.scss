@@ -1,4 +1,6 @@
 #sidebar {
+  $sidebar-menu-line-height: 28px;
+
   #header {
     @include clearfix;
     padding: 0 $defaultPadding;
@@ -14,7 +16,6 @@
 
       color: $darkGrey;
       margin: -6px 0 0;
-      @include antialias;
     }
 
     .manage {
@@ -56,24 +57,26 @@
         font-size: .9rem;
         text-transform: capitalize;
 
-        $moduleNameHeight: 24px;
         $imageSize: 16px;
 
         .module-name {
+          @include ellipsis;
           color: #353535;
           display: block;
-          line-height: $moduleNameHeight;
+          line-height: $sidebar-menu-line-height;
           padding-left: $defaultPadding;
           padding-right: $defaultPadding;
 
           &:hover {
-            text-decoration: underline;
+            background: {
+              color: rgba($blue, 0.1);
+            }
           }
         }
 
         .module-image {
           width: 16px;
-          height: $moduleNameHeight;
+          height: $sidebar-menu-line-height;
           display: inline-block;
           float: left;
           margin-right: 6px;
@@ -96,11 +99,13 @@
           }
 
           &.active, &:hover {
-            $borderLeftSize: 4px;
+            background: {
+              color: rgba($blue, 0.1);
+            }
 
             a {
               border-color: $blue;
-              color: $blue;
+              color: #353535;
 
               i {
                 color: $blue;
@@ -109,11 +114,11 @@
           }
 
           a {
+            line-height: $sidebar-menu-line-height;
             transition: $transition;
-            border-left: 4px solid transparent;
             font-size: .9rem;
             display: block;
-            padding-left: 44px;
+            padding-left: 48px;
             font-weight: normal;
 
             i {

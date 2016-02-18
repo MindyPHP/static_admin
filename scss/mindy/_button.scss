@@ -1,0 +1,18 @@
+$button-padding: 5px 14px !default;
+$button-background: $peter-river !default;
+
+@mixin button($background: $button-background, $padding: $button-padding) {
+  @include antialias;
+  border: none;
+  background-color: $background;
+  padding: $padding;
+  @include box-sizing(padding-box);
+  display: inline-block;
+  color: #fff;
+  border: 0;
+
+  &:hover {
+    background-color: darken($background, 5%);
+    color: #fff;
+  }
+}

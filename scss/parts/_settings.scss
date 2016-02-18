@@ -1,0 +1,18 @@
+.settings-container {
+  .settings-title {
+    margin: 0 0 10px 0;
+    padding: 0;
+    line-height: 1.4;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .settings-item {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+
+    &:not(:last-child) {
+      border-bottom: 3px dashed #ddd;
+    }
+  }
+}

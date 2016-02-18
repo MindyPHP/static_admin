@@ -1,3 +1,10 @@
+$flash-success-color: #695e45;
+$flash-info-color: #695e45;
+$flash-error-color: #ca8989;
+$flash-warning-color: #c48383;
+$flash-li-padding: 15px;
+$flash-font-size: 1rem;
+
 .flash-list {
   @include reset-list;
   margin: 20px 0;
@@ -5,55 +12,62 @@
   li {
     border-radius: 5px;
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: $flash-font-size;
     background-color: $grey;
     border: {
       style: solid;
       color: darken($grey, 10%);
       width: 1px;
     }
-    padding: 15px $defaultPadding 15px $defaultPadding + 33px + 15px;
+    padding: $flash-li-padding $defaultPadding $flash-li-padding $defaultPadding + 33px + $flash-li-padding;
     margin-bottom: 10px;
-
     background: {
       position: $defaultPadding 50%;
       repeat: no-repeat;
     }
 
-    .icon {
+    .remove {
       cursor: pointer;
       font-weight: bold;
       font-size: 1.4rem;
-      line-height: 1.8rem;
-      @include opacity(0.5);
+      line-height: 1.4rem;
+      opacity: 0.5;
+      display: block;
+      width: 32px;
+      height: 32px;
+      text-align: center;
+
+      &:hover {
+        color: #a00;
+      }
     }
 
     &.success {
       background-image: url(../images/icons/icon-success.png);
-      color: #948461;
-      border-color: #EBE2B6;
-      background-color: #F9F6E3;
+      color: $flash-success-color;
+      border-color: saturate(lighten($flash-success-color, 50%), 20%);
+      background-color: saturate(lighten($flash-success-color, 60%), 40%);
     }
 
     &.info {
       background-image: url(../images/icons/icon-info.png);
-      color: #948461;
-      border-color: #EBE2B6;
-      background-color: #F9F6E3;
+      color: $flash-info-color;
+      border-color: saturate(lighten($flash-success-color, 50%), 20%);
+      background-color: saturate(lighten($flash-success-color, 60%), 40%);
     }
 
     &.error {
       background-image: url(../images/icons/icon-error.png);
-      color: #ca8989;
-      border-color: #e2b7b7;
-      background-color: #fdeaea;
+      color: $flash-error-color;
+      border-color: saturate(lighten($flash-error-color, 50%), 20%);
+      background-color: saturate(lighten($flash-error-color, 60%), 40%);
     }
 
     &.warning {
       background-image: url(../images/icons/icon-warning.png);
-      color: #c48383;
-      border-color: #f1d0d0;
-      background-color: #ffebeb;
+      color: $flash-warning-color;
+      border-color: saturate(lighten($flash-warning-color, 50%), 20%);
+      background-color: saturate(lighten($flash-warning-color, 60%), 40%);
     }
   }
 }

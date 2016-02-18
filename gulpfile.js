@@ -172,7 +172,7 @@ gulp.task('js', ['coffee'], function() {
 
 gulp.task('images', function() {
     return gulp.src(paths.images)
-        .pipe(imagemin(imagesOpts))
+        //.pipe(imagemin(imagesOpts))
         .pipe(gulp.dest(dst.images));
 });
 
